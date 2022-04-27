@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package tic;
+option go_package = "github.com/xxarupakaxx/tic-tac-toc/gen/proto";
+
+enum XO {
+  X = 0;
+  O = 1;
+}

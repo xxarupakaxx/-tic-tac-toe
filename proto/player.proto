@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package tic;
+option go_package = "github.com/xxarupakaxx/tic-tac-toc/gen/proto";
+import "proto/xo.proto";
+service TicService {
+  rpc Play(stream PlayerRequest) returns (stream PlayerResponse) {}
+}
+
+message PlayerRequest {
+  int32 roomID = 1;
+  Player player = 2;
+
+  oneof action {
+    StartAction start = 3;
+    PlayAction play = 4;
+  }
+
+  message StartAction {}
+  message PlayAction {
+    XO xo = 1;
+  }
+}
+
+message Player {
+  int32 playerID = 1;
+  XO xo = 2;
+}
+
+message PlayerResponse {
+  oneof Event {
+    WaitingEvent waiting =  1;
+    ReadyEvent ready = 2;
+    PlayEvent play = 3;
+    FinishEvent finish = 4;
+  }
+
+  message WaitingEvent {}
+  message ReadyEvent {}
+  message PlayEvent {
+    Player player = 1;
+  }
+  message ZyankenWaitingEvent {}
+  message FinishEvent {
+    Result result = 1;
+  }
+}
+
+enum Result {
+  DRAW = 0;
+  LOSE = 1;
+  WIN = 2;
+}
