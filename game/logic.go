@@ -1,8 +1,13 @@
 package game
 
 type TicTacToe struct {
-	Me XO
-	Board []XO
+	Me    XO
+	Board *Board
+}
+
+func NewTicTacToe(me XO) *TicTacToe {
+	board := NewBoard()
+	return &TicTacToe{Me: me, Board: board}
 }
 
 func (t *TicTacToe) Logic() XO {
@@ -21,8 +26,8 @@ func (t *TicTacToe) Logic() XO {
 		a := matrix[i][0]
 		b := matrix[i][1]
 		c := matrix[i][2]
-		if t.Board[a] != UNKNOWN && t.Board[a] == t.Board[b] && t.Board[a] == t.Board[c]{
-			return t.Board[a]
+		if t.Board.Line[a] != UNKNOWN && t.Board.Line[a] == t.Board.Line[b] && t.Board.Line[a] == t.Board.Line[c] {
+			return t.Board.Line[a]
 		}
 	}
 
