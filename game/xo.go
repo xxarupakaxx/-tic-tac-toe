@@ -6,6 +6,7 @@ type Result int32
 const (
 	X XO = iota
 	O
+	UNKNOWN
 )
 
 const (
@@ -20,9 +21,11 @@ func ConvertToXO(a XO) string {
 		return "X"
 	case O:
 		return "O"
+	case UNKNOWN:
+		return ""
 	}
 
-	return ""
+	panic("しらない")
 }
 
 func ConvertWinner(a Result) string {

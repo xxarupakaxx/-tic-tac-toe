@@ -6,4 +6,5 @@ option go_package = "github.com/xxarupakaxx/tic-tac-toc/gen/proto";
 enum XO {
   X = 0;
   O = 1;
+  UNKNOWN = 2;
 }
