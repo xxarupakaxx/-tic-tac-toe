@@ -2,8 +2,9 @@ package game
 
 type XO int32
 type Result int32
+
 const (
-	X XO =iota
+	X XO = iota
 	O
 )
 
@@ -30,9 +31,9 @@ func ConvertWinner(a Result) string {
 		return "勝ち"
 	case LOSE:
 		return "負け"
-	default:
+	case DRAW:
 		return "引き分け"
 	}
+
+	return ""
 }
-
-
