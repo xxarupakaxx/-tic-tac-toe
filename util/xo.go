@@ -30,3 +30,16 @@ func ConvertGameXO(xo proto.XO) game.XO {
 
 	panic("あり得ない")
 }
+
+func ConvertGameResult(result game.Result) proto.Result {
+	switch result {
+	case game.WINNER:
+		return proto.Result_WIN
+	case game.LOSE:
+		return proto.Result_LOSE
+	case game.DRAW:
+		return proto.Result_DRAW
+	}
+
+	panic("なにそれ")
+}
