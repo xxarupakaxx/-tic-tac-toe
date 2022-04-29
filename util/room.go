@@ -12,3 +12,11 @@ func ConvertPBRoom(room *game.Room) *proto.Room {
 		Guest: ConvertPBPlayer(room.Guest),
 	}
 }
+
+func ConvertGameRoom(room *proto.Room) *game.Room {
+	return &game.Room{
+		ID:    room.Id,
+		Host:  ConvertGamePlayer(room.GetHost()),
+		Guest: ConvertGamePlayer(room.GetGuest()),
+	}
+}

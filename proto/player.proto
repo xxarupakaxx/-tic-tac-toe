@@ -18,7 +18,7 @@ message PlayerRequest {
 
   message StartAction {}
   message PlayAction {
-    XO xo = 1;
+    int32 number = 1;
   }
 }
 

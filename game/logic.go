@@ -33,3 +33,15 @@ func (t *TicTacToe) Logic() XO {
 
 	return UNKNOWN
 }
+
+func Winner(winner, playerXO XO) Result {
+	if winner == UNKNOWN {
+		return DRAW
+	}
+
+	if winner == playerXO {
+		return WINNER
+	} else {
+		return LOSE
+	}
+}
