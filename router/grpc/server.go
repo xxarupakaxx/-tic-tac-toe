@@ -5,6 +5,7 @@ import (
 	grpc_logrus "github.com/grpc-ecosystem/go-grpc-middleware/logging/logrus"
 	logrus2 "github.com/sirupsen/logrus"
 	"github.com/xxarupakaxx/tic-tac-toe/gen/proto"
+	"github.com/xxarupakaxx/tic-tac-toe/router/handler"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"log"
@@ -26,8 +27,8 @@ func main() {
 		grpc.UnaryInterceptor(
 			grpc_logrus.UnaryServerInterceptor(logrusEnty)))
 
-	proto.RegisterMatchingServiceServer()
-	proto.RegisterTicServiceServer()
+	proto.RegisterMatchingServiceServer(server, handler.NewMatchingHandler())
+	proto.RegisterTicServiceServer(server, handler.NewGameHandler())
 
 	reflection.Register(server)
 

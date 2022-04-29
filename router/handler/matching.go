@@ -18,7 +18,7 @@ type MatchingHandler struct {
 	maxPlayerID int32
 }
 
-func (m *MatchingHandler) JoinRoom(request *proto.JoinRoomRequest, stream proto.MatchingService_JoinRoomServer) error {
+func (m *MatchingHandler) JoinRoom(stream proto.MatchingService_JoinRoomServer) error {
 	ctx, cancel := context.WithTimeout(stream.Context(), 2*time.Minute)
 	defer cancel()
 
