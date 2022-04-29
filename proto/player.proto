@@ -29,7 +29,7 @@ message Player {
 
 message PlayerResponse {
   oneof Event {
-    WaitingEvent waiting =  1;
+    WaitingEvent waiting = 1;
     ReadyEvent ready = 2;
     PlayEvent play = 3;
     FinishEvent finish = 4;
@@ -39,10 +39,12 @@ message PlayerResponse {
   message ReadyEvent {}
   message PlayEvent {
     Player player = 1;
+    Board board = 2;
   }
   message ZyankenWaitingEvent {}
   message FinishEvent {
     Result result = 1;
+    Board board = 2;
   }
 }
 
@@ -50,4 +52,8 @@ enum Result {
   DRAW = 0;
   LOSE = 1;
   WIN = 2;
+}
+
+message Board {
+  repeated XO xos = 1;
 }

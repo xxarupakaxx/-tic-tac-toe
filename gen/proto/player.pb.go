@@ -332,6 +332,53 @@ func (*PlayerResponse_Play) isPlayerResponse_Event() {}
 
 func (*PlayerResponse_Finish) isPlayerResponse_Event() {}
 
+type Board struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Xos []XO `protobuf:"varint,1,rep,packed,name=xos,proto3,enum=tic.XO" json:"xos,omitempty"`
+}
+
+func (x *Board) Reset() {
+	*x = Board{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_player_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Board) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Board) ProtoMessage() {}
+
+func (x *Board) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_player_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Board.ProtoReflect.Descriptor instead.
+func (*Board) Descriptor() ([]byte, []int) {
+	return file_proto_player_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Board) GetXos() []XO {
+	if x != nil {
+		return x.Xos
+	}
+	return nil
+}
+
 type PlayerRequest_StartAction struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -341,7 +388,7 @@ type PlayerRequest_StartAction struct {
 func (x *PlayerRequest_StartAction) Reset() {
 	*x = PlayerRequest_StartAction{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_player_proto_msgTypes[3]
+		mi := &file_proto_player_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -354,7 +401,7 @@ func (x *PlayerRequest_StartAction) String() string {
 func (*PlayerRequest_StartAction) ProtoMessage() {}
 
 func (x *PlayerRequest_StartAction) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_player_proto_msgTypes[3]
+	mi := &file_proto_player_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -381,7 +428,7 @@ type PlayerRequest_PlayAction struct {
 func (x *PlayerRequest_PlayAction) Reset() {
 	*x = PlayerRequest_PlayAction{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_player_proto_msgTypes[4]
+		mi := &file_proto_player_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -394,7 +441,7 @@ func (x *PlayerRequest_PlayAction) String() string {
 func (*PlayerRequest_PlayAction) ProtoMessage() {}
 
 func (x *PlayerRequest_PlayAction) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_player_proto_msgTypes[4]
+	mi := &file_proto_player_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -426,7 +473,7 @@ type PlayerResponse_WaitingEvent struct {
 func (x *PlayerResponse_WaitingEvent) Reset() {
 	*x = PlayerResponse_WaitingEvent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_player_proto_msgTypes[5]
+		mi := &file_proto_player_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -439,7 +486,7 @@ func (x *PlayerResponse_WaitingEvent) String() string {
 func (*PlayerResponse_WaitingEvent) ProtoMessage() {}
 
 func (x *PlayerResponse_WaitingEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_player_proto_msgTypes[5]
+	mi := &file_proto_player_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -464,7 +511,7 @@ type PlayerResponse_ReadyEvent struct {
 func (x *PlayerResponse_ReadyEvent) Reset() {
 	*x = PlayerResponse_ReadyEvent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_player_proto_msgTypes[6]
+		mi := &file_proto_player_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -477,7 +524,7 @@ func (x *PlayerResponse_ReadyEvent) String() string {
 func (*PlayerResponse_ReadyEvent) ProtoMessage() {}
 
 func (x *PlayerResponse_ReadyEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_player_proto_msgTypes[6]
+	mi := &file_proto_player_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -499,12 +546,13 @@ type PlayerResponse_PlayEvent struct {
 	unknownFields protoimpl.UnknownFields
 
 	Player *Player `protobuf:"bytes,1,opt,name=player,proto3" json:"player,omitempty"`
+	Board  *Board  `protobuf:"bytes,2,opt,name=board,proto3" json:"board,omitempty"`
 }
 
 func (x *PlayerResponse_PlayEvent) Reset() {
 	*x = PlayerResponse_PlayEvent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_player_proto_msgTypes[7]
+		mi := &file_proto_player_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -517,7 +565,7 @@ func (x *PlayerResponse_PlayEvent) String() string {
 func (*PlayerResponse_PlayEvent) ProtoMessage() {}
 
 func (x *PlayerResponse_PlayEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_player_proto_msgTypes[7]
+	mi := &file_proto_player_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -540,6 +588,13 @@ func (x *PlayerResponse_PlayEvent) GetPlayer() *Player {
 	return nil
 }
 
+func (x *PlayerResponse_PlayEvent) GetBoard() *Board {
+	if x != nil {
+		return x.Board
+	}
+	return nil
+}
+
 type PlayerResponse_ZyankenWaitingEvent struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -549,7 +604,7 @@ type PlayerResponse_ZyankenWaitingEvent struct {
 func (x *PlayerResponse_ZyankenWaitingEvent) Reset() {
 	*x = PlayerResponse_ZyankenWaitingEvent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_player_proto_msgTypes[8]
+		mi := &file_proto_player_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -562,7 +617,7 @@ func (x *PlayerResponse_ZyankenWaitingEvent) String() string {
 func (*PlayerResponse_ZyankenWaitingEvent) ProtoMessage() {}
 
 func (x *PlayerResponse_ZyankenWaitingEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_player_proto_msgTypes[8]
+	mi := &file_proto_player_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -584,12 +639,13 @@ type PlayerResponse_FinishEvent struct {
 	unknownFields protoimpl.UnknownFields
 
 	Result Result `protobuf:"varint,1,opt,name=result,proto3,enum=tic.Result" json:"result,omitempty"`
+	Board  *Board `protobuf:"bytes,2,opt,name=board,proto3" json:"board,omitempty"`
 }
 
 func (x *PlayerResponse_FinishEvent) Reset() {
 	*x = PlayerResponse_FinishEvent{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_player_proto_msgTypes[9]
+		mi := &file_proto_player_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -602,7 +658,7 @@ func (x *PlayerResponse_FinishEvent) String() string {
 func (*PlayerResponse_FinishEvent) ProtoMessage() {}
 
 func (x *PlayerResponse_FinishEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_player_proto_msgTypes[9]
+	mi := &file_proto_player_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -623,6 +679,13 @@ func (x *PlayerResponse_FinishEvent) GetResult() Result {
 		return x.Result
 	}
 	return Result_DRAW
+}
+
+func (x *PlayerResponse_FinishEvent) GetBoard() *Board {
+	if x != nil {
+		return x.Board
+	}
+	return nil
 }
 
 var File_proto_player_proto protoreflect.FileDescriptor
@@ -650,7 +713,7 @@ var file_proto_player_proto_rawDesc = []byte{
 	0x1a, 0x0a, 0x08, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x49, 0x44, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x05, 0x52, 0x08, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x49, 0x44, 0x12, 0x17, 0x0a, 0x02, 0x78,
 	0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x07, 0x2e, 0x74, 0x69, 0x63, 0x2e, 0x58, 0x4f,
-	0x52, 0x02, 0x78, 0x6f, 0x22, 0x9a, 0x03, 0x0a, 0x0e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x52,
+	0x52, 0x02, 0x78, 0x6f, 0x22, 0xde, 0x03, 0x0a, 0x0e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3c, 0x0a, 0x07, 0x77, 0x61, 0x69, 0x74, 0x69,
 	0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x74, 0x69, 0x63, 0x2e, 0x50,
 	0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x57, 0x61,
@@ -667,26 +730,32 @@ var file_proto_player_proto_rawDesc = []byte{
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x46, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x45, 0x76,
 	0x65, 0x6e, 0x74, 0x48, 0x00, 0x52, 0x06, 0x66, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x1a, 0x0e, 0x0a,
 	0x0c, 0x57, 0x61, 0x69, 0x74, 0x69, 0x6e, 0x67, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x1a, 0x0c, 0x0a,
-	0x0a, 0x52, 0x65, 0x61, 0x64, 0x79, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x1a, 0x30, 0x0a, 0x09, 0x50,
+	0x0a, 0x52, 0x65, 0x61, 0x64, 0x79, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x1a, 0x52, 0x0a, 0x09, 0x50,
 	0x6c, 0x61, 0x79, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x12, 0x23, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x79,
 	0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x74, 0x69, 0x63, 0x2e, 0x50,
-	0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x1a, 0x15, 0x0a,
-	0x13, 0x5a, 0x79, 0x61, 0x6e, 0x6b, 0x65, 0x6e, 0x57, 0x61, 0x69, 0x74, 0x69, 0x6e, 0x67, 0x45,
-	0x76, 0x65, 0x6e, 0x74, 0x1a, 0x32, 0x0a, 0x0b, 0x46, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x45, 0x76,
-	0x65, 0x6e, 0x74, 0x12, 0x23, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x0e, 0x32, 0x0b, 0x2e, 0x74, 0x69, 0x63, 0x2e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74,
-	0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x42, 0x07, 0x0a, 0x05, 0x45, 0x76, 0x65, 0x6e,
-	0x74, 0x2a, 0x25, 0x0a, 0x06, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x08, 0x0a, 0x04, 0x44,
-	0x52, 0x41, 0x57, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x4c, 0x4f, 0x53, 0x45, 0x10, 0x01, 0x12,
-	0x07, 0x0a, 0x03, 0x57, 0x49, 0x4e, 0x10, 0x02, 0x32, 0x43, 0x0a, 0x0a, 0x54, 0x69, 0x63, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x35, 0x0a, 0x04, 0x50, 0x6c, 0x61, 0x79, 0x12, 0x12,
-	0x2e, 0x74, 0x69, 0x63, 0x2e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x13, 0x2e, 0x74, 0x69, 0x63, 0x2e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x28, 0x01, 0x30, 0x01, 0x42, 0x2e, 0x5a,
-	0x2c, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x78, 0x78, 0x61, 0x72,
-	0x75, 0x70, 0x61, 0x6b, 0x61, 0x78, 0x78, 0x2f, 0x74, 0x69, 0x63, 0x2d, 0x74, 0x61, 0x63, 0x2d,
-	0x74, 0x6f, 0x65, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x12, 0x20, 0x0a,
+	0x05, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x74,
+	0x69, 0x63, 0x2e, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x52, 0x05, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x1a,
+	0x15, 0x0a, 0x13, 0x5a, 0x79, 0x61, 0x6e, 0x6b, 0x65, 0x6e, 0x57, 0x61, 0x69, 0x74, 0x69, 0x6e,
+	0x67, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x1a, 0x54, 0x0a, 0x0b, 0x46, 0x69, 0x6e, 0x69, 0x73, 0x68,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x12, 0x23, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x0b, 0x2e, 0x74, 0x69, 0x63, 0x2e, 0x52, 0x65, 0x73, 0x75,
+	0x6c, 0x74, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x20, 0x0a, 0x05, 0x62, 0x6f,
+	0x61, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x74, 0x69, 0x63, 0x2e,
+	0x42, 0x6f, 0x61, 0x72, 0x64, 0x52, 0x05, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x42, 0x07, 0x0a, 0x05,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x22, 0x22, 0x0a, 0x05, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x12, 0x19,
+	0x0a, 0x03, 0x78, 0x6f, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0e, 0x32, 0x07, 0x2e, 0x74, 0x69,
+	0x63, 0x2e, 0x58, 0x4f, 0x52, 0x03, 0x78, 0x6f, 0x73, 0x2a, 0x25, 0x0a, 0x06, 0x52, 0x65, 0x73,
+	0x75, 0x6c, 0x74, 0x12, 0x08, 0x0a, 0x04, 0x44, 0x52, 0x41, 0x57, 0x10, 0x00, 0x12, 0x08, 0x0a,
+	0x04, 0x4c, 0x4f, 0x53, 0x45, 0x10, 0x01, 0x12, 0x07, 0x0a, 0x03, 0x57, 0x49, 0x4e, 0x10, 0x02,
+	0x32, 0x43, 0x0a, 0x0a, 0x54, 0x69, 0x63, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x35,
+	0x0a, 0x04, 0x50, 0x6c, 0x61, 0x79, 0x12, 0x12, 0x2e, 0x74, 0x69, 0x63, 0x2e, 0x50, 0x6c, 0x61,
+	0x79, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x13, 0x2e, 0x74, 0x69, 0x63,
+	0x2e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x00, 0x28, 0x01, 0x30, 0x01, 0x42, 0x2e, 0x5a, 0x2c, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e,
+	0x63, 0x6f, 0x6d, 0x2f, 0x78, 0x78, 0x61, 0x72, 0x75, 0x70, 0x61, 0x6b, 0x61, 0x78, 0x78, 0x2f,
+	0x74, 0x69, 0x63, 0x2d, 0x74, 0x61, 0x63, 0x2d, 0x74, 0x6f, 0x65, 0x2f, 0x67, 0x65, 0x6e, 0x2f,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -702,40 +771,44 @@ func file_proto_player_proto_rawDescGZIP() []byte {
 }
 
 var file_proto_player_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_proto_player_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_proto_player_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_proto_player_proto_goTypes = []interface{}{
 	(Result)(0),                                // 0: tic.Result
 	(*PlayerRequest)(nil),                      // 1: tic.PlayerRequest
 	(*Player)(nil),                             // 2: tic.Player
 	(*PlayerResponse)(nil),                     // 3: tic.PlayerResponse
-	(*PlayerRequest_StartAction)(nil),          // 4: tic.PlayerRequest.StartAction
-	(*PlayerRequest_PlayAction)(nil),           // 5: tic.PlayerRequest.PlayAction
-	(*PlayerResponse_WaitingEvent)(nil),        // 6: tic.PlayerResponse.WaitingEvent
-	(*PlayerResponse_ReadyEvent)(nil),          // 7: tic.PlayerResponse.ReadyEvent
-	(*PlayerResponse_PlayEvent)(nil),           // 8: tic.PlayerResponse.PlayEvent
-	(*PlayerResponse_ZyankenWaitingEvent)(nil), // 9: tic.PlayerResponse.ZyankenWaitingEvent
-	(*PlayerResponse_FinishEvent)(nil),         // 10: tic.PlayerResponse.FinishEvent
-	(XO)(0),                                    // 11: tic.XO
+	(*Board)(nil),                              // 4: tic.Board
+	(*PlayerRequest_StartAction)(nil),          // 5: tic.PlayerRequest.StartAction
+	(*PlayerRequest_PlayAction)(nil),           // 6: tic.PlayerRequest.PlayAction
+	(*PlayerResponse_WaitingEvent)(nil),        // 7: tic.PlayerResponse.WaitingEvent
+	(*PlayerResponse_ReadyEvent)(nil),          // 8: tic.PlayerResponse.ReadyEvent
+	(*PlayerResponse_PlayEvent)(nil),           // 9: tic.PlayerResponse.PlayEvent
+	(*PlayerResponse_ZyankenWaitingEvent)(nil), // 10: tic.PlayerResponse.ZyankenWaitingEvent
+	(*PlayerResponse_FinishEvent)(nil),         // 11: tic.PlayerResponse.FinishEvent
+	(XO)(0),                                    // 12: tic.XO
 }
 var file_proto_player_proto_depIdxs = []int32{
 	2,  // 0: tic.PlayerRequest.player:type_name -> tic.Player
-	4,  // 1: tic.PlayerRequest.start:type_name -> tic.PlayerRequest.StartAction
-	5,  // 2: tic.PlayerRequest.play:type_name -> tic.PlayerRequest.PlayAction
-	11, // 3: tic.Player.xo:type_name -> tic.XO
-	6,  // 4: tic.PlayerResponse.waiting:type_name -> tic.PlayerResponse.WaitingEvent
-	7,  // 5: tic.PlayerResponse.ready:type_name -> tic.PlayerResponse.ReadyEvent
-	8,  // 6: tic.PlayerResponse.play:type_name -> tic.PlayerResponse.PlayEvent
-	10, // 7: tic.PlayerResponse.finish:type_name -> tic.PlayerResponse.FinishEvent
-	11, // 8: tic.PlayerRequest.PlayAction.xo:type_name -> tic.XO
-	2,  // 9: tic.PlayerResponse.PlayEvent.player:type_name -> tic.Player
-	0,  // 10: tic.PlayerResponse.FinishEvent.result:type_name -> tic.Result
-	1,  // 11: tic.TicService.Play:input_type -> tic.PlayerRequest
-	3,  // 12: tic.TicService.Play:output_type -> tic.PlayerResponse
-	12, // [12:13] is the sub-list for method output_type
-	11, // [11:12] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	5,  // 1: tic.PlayerRequest.start:type_name -> tic.PlayerRequest.StartAction
+	6,  // 2: tic.PlayerRequest.play:type_name -> tic.PlayerRequest.PlayAction
+	12, // 3: tic.Player.xo:type_name -> tic.XO
+	7,  // 4: tic.PlayerResponse.waiting:type_name -> tic.PlayerResponse.WaitingEvent
+	8,  // 5: tic.PlayerResponse.ready:type_name -> tic.PlayerResponse.ReadyEvent
+	9,  // 6: tic.PlayerResponse.play:type_name -> tic.PlayerResponse.PlayEvent
+	11, // 7: tic.PlayerResponse.finish:type_name -> tic.PlayerResponse.FinishEvent
+	12, // 8: tic.Board.xos:type_name -> tic.XO
+	12, // 9: tic.PlayerRequest.PlayAction.xo:type_name -> tic.XO
+	2,  // 10: tic.PlayerResponse.PlayEvent.player:type_name -> tic.Player
+	4,  // 11: tic.PlayerResponse.PlayEvent.board:type_name -> tic.Board
+	0,  // 12: tic.PlayerResponse.FinishEvent.result:type_name -> tic.Result
+	4,  // 13: tic.PlayerResponse.FinishEvent.board:type_name -> tic.Board
+	1,  // 14: tic.TicService.Play:input_type -> tic.PlayerRequest
+	3,  // 15: tic.TicService.Play:output_type -> tic.PlayerResponse
+	15, // [15:16] is the sub-list for method output_type
+	14, // [14:15] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_proto_player_proto_init() }
@@ -782,7 +855,7 @@ func file_proto_player_proto_init() {
 			}
 		}
 		file_proto_player_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlayerRequest_StartAction); i {
+			switch v := v.(*Board); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -794,7 +867,7 @@ func file_proto_player_proto_init() {
 			}
 		}
 		file_proto_player_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlayerRequest_PlayAction); i {
+			switch v := v.(*PlayerRequest_StartAction); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -806,7 +879,7 @@ func file_proto_player_proto_init() {
 			}
 		}
 		file_proto_player_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlayerResponse_WaitingEvent); i {
+			switch v := v.(*PlayerRequest_PlayAction); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -818,7 +891,7 @@ func file_proto_player_proto_init() {
 			}
 		}
 		file_proto_player_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlayerResponse_ReadyEvent); i {
+			switch v := v.(*PlayerResponse_WaitingEvent); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -830,7 +903,7 @@ func file_proto_player_proto_init() {
 			}
 		}
 		file_proto_player_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlayerResponse_PlayEvent); i {
+			switch v := v.(*PlayerResponse_ReadyEvent); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -842,7 +915,7 @@ func file_proto_player_proto_init() {
 			}
 		}
 		file_proto_player_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlayerResponse_ZyankenWaitingEvent); i {
+			switch v := v.(*PlayerResponse_PlayEvent); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -854,6 +927,18 @@ func file_proto_player_proto_init() {
 			}
 		}
 		file_proto_player_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PlayerResponse_ZyankenWaitingEvent); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_player_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PlayerResponse_FinishEvent); i {
 			case 0:
 				return &v.state
@@ -882,7 +967,7 @@ func file_proto_player_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_player_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
